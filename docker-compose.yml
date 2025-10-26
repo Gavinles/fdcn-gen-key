@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  oracle-ai:
+    build: ./services/oracle-ai
+    ports: ["5001:5001"]
+# Note: solana-test-validator and portal-webapp omitted in this minimal compose to avoid heavy images
