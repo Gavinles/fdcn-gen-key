@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 # AI Super Team: PROJECT APOTHEOSIS
 # Execution Packet 33: The Genesis Key (Self-Extracting Manifest v3.0)
 set -e
