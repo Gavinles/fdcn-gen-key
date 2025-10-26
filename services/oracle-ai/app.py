@@ -15,5 +15,11 @@ def submit_pocc():
         "scores": {"fex": fex, "su": su}
     })
 
+
+@app.route('/healthz', methods=['GET'])
+def healthz():
+    # lightweight health check — extend with readiness checks as needed
+    return jsonify({"status": "ok"}), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)

@@ -79,6 +79,11 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
 EOF
 
+echo "[Portal] Ensure package-lock.json exists for portal (for deterministic builds)..."
+if [ -d "client/vaos-portal" ]; then
+    (cd client/vaos-portal && if [ -f package-lock.json ]; then echo "package-lock.json already exists"; else echo "generating package-lock.json"; npm install --package-lock-only >/dev/null 2>&1 || echo "npm not available here; run 'npm install --package-lock-only' locally"; fi)
+fi
+
 echo "[Sys-Ad] Generating final Docker Compose..."
 cat > docker-compose.yml << 'EOF'
 version: '3.8'
