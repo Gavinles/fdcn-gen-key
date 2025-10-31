@@ -1,0 +1,28 @@
+name: generator-and-build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run generator script
+        run: |
+          chmod +x ./deploy_fixed.sh || true
+          ./deploy_fixed.sh || true
+
+      - name: Build Docker Compose (no push)
+        run: |
+          docker compose -f ./docker-compose.yml build --parallel || true
